@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Week3</title>
+  
+  
+  <meta name="author" content="Yijia Wu">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="GSoC 2020 Blog - Yijia Wu - GSoC progress" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Week3">
+  
+
+   
+  <meta property="og:description" content="Stable pick and place in Gazebo In this week, the robot can finally grasp the objects stably. I mentioned in last blog that when using MoveIt move group pick function, the gripper can grasp the object in Rviz, but cannot grasp it in Gazebo. However, if I set the grasping...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-18-week3/">
+  <link rel="canonical" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-18-week3/">
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  
+  <meta name="twitter:title" content="Week3">
+  
+
+  
+  <meta name="twitter:description" content="Stable pick and place in Gazebo In this week, the robot can finally grasp the objects stably. I mentioned in last blog that when using MoveIt move group pick function, the gripper can grasp the object in Rviz, but cannot grasp it in Gazebo. However, if I set the grasping...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">GSoC 2020 Blog - Yijia Wu</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/aboutme">About Me</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Project</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/aboutproject">Introduction</a>
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/progress">Progress</a>
+            </div>
+          </li>
+        </ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">
+          <img alt="Navbar avatar" class="avatar-img" src="/colab-gsoc2020-Yijia_Wu/img/logo.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Week3</h1>
+      
+      
+      
+          <span class="post-meta">Posted on June 18, 2020</span>
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <h2 id="stable-pick-and-place-in-gazebo">Stable pick and place in Gazebo</h2>
+
+<p>In this week, the robot can finally grasp the objects stably. I mentioned in last blog that when using <a href="http://docs.ros.org/melodic/api/moveit_commander/html/classmoveit__commander_1_1move__group_1_1MoveGroupCommander.html">MoveIt move group pick function</a>, the gripper can grasp the object in Rviz, but cannot grasp it in Gazebo. However, if I set the grasping distance properly, larger but not much larger than what the gripper need to go, then when the execution time is out of tolerance, the gripper will stop moving and do next task.  Compared with the method I used last week, the new method makes the gripper doesn’t shake even if the given gripping distance is larger than needed, which provides a bigger tolerance range to tune the gripping distance. With this method, though ROS controller takes it as an error, but the gripper can stably grasp the objects. The following example warning and error won’t influence the behavior of grasping.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span> WARN]: Controller  failed with error GOAL_TOLERANCE_VIOLATED: 
+<span class="o">[</span> WARN]: Controller handle  reports status ABORTED
+
+<span class="o">[</span>ERROR]: Controller is taking too long to execute trajectory <span class="o">(</span>the expected upper bound <span class="k">for </span>the trajectory execution was 1.231552 seconds<span class="o">)</span><span class="nb">.</span> Stopping trajectory.
+
+<span class="o">[</span> WARN]: Fail: ABORTED: Timeout reached
+</code></pre></div></div>
+
+<p>This method still has some limitations with planning and control. Each time I call the pick function, MoveIt plans a different trajectory to grasp the object. Sometimes the planned trajectory cannot be execute. An error as below can be seen in terminal. Then the robot will not be able to grasp the object. When I tried to use place function, this probelm also always happens, so I directly move the robot arm to desired position and place it by opening the gripper.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span> WARN]: Fail: ABORTED: Solution found but controller failed during execution
+</code></pre></div></div>
+
+<p>Three different kinds of objects: cube, sphere and cylider, are tested with this picking methods. The result can be seen by clicking the following image. To show that the robot can also grasp from different direction, I made it to grasp the cylinder with the gripper parallel to the ground instead of gripping from above, but it is still more promising to pick objects from above.</p>
+
+<p><a href="https://youtu.be/HEDsM0PatiU"><img src="https://img.youtube.com/vi/HEDsM0PatiU/0.jpg" alt="pick and place" class="mx-auto d-block" /></a></p>
+
+<h2 id="industrial-robot-wrapper">Industrial Robot Wrapper</h2>
+
+<p>To use GUI to control the robot arm and gripper, I made a Industrial Robot Wrapper which includes necessary functionality to move robot arm and gripper. It is also connected with the template GUI I made last week, so now we can use GUI to do forward kinematic(move robot joints to given joint angle) and inverse kinematic(given desired end effector pose, MoveIt will plan a trajectory for robot arm to go there).</p>
+
+<h2 id="developing-parts">Developing parts</h2>
+
+<h3 id="change-current-gui-template-into-rqt-plugins">Change current GUI template into rqt plugins</h3>
+<p><a href="http://wiki.ros.org/rqt?distro=noetic">rqt</a> is a software framework of ROS that implements the various GUI tools in the form of plugins. The advantage of using it is that we can customize different GUI that shares similar contents easily by integrating rqt plugins, and don’t need to generate each of them from scratch. I am currently working on this task.</p>
+
+<h3 id="test-grasping-irregular-mesh-based-object">Test grasping irregular mesh-based object</h3>
+<p>I have modified the hammer model provided by Gazebo to test it. However, since all the physical parameters are manully set, the hammer doesn’t behave as what I expected and will oscillate in Gazebo. When the gripper is trying to grasp it, the grasp_fix plugin can detect a grasp, but it will suddently move out of thr gripper. It would be more reasonable to directly generate the sdf and urdf file with CAD software.</p>
+
+<h3 id="make-a-two-finger-gripper-model-based-on-schunk-kgg-gripper">Make a two-finger gripper model based on Schunk KGG gripper</h3>
+<p>If we only generate models of the gripper in sdf format, it can not be seen in Rviz, but URDF file can be used in both Gazebo and Rviz. I plan to make it after making rqt_plugin.</p>
+
+      </article>
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-06-11-week1_2/" data-toggle="tooltip" data-placement="top" title="Week1-2">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-06-25-week4/" data-toggle="tooltip" data-placement="top" title="Week4">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+              
+  
+  
+  
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:sixerwyj@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/sixer51" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Yijia Wu
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/colab-gsoc2020-Yijia_Wu/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

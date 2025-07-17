@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Week5 and 6</title>
+  
+  
+  <meta name="author" content="Yijia Wu">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="GSoC 2020 Blog - Yijia Wu - GSoC progress" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Week5 and 6">
+  
+
+   
+  <meta property="og:description" content="Updates for the first exercise Following parts are modified or added in last two weeks: GUI Add button to respawn models in Gazebo and Rviz() Limitation of the joint value and home pose are specfied in a separated yaml file instead of hard coding Some modifications in visulization API All...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-12-week5_6/">
+  <link rel="canonical" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-12-week5_6/">
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  
+  <meta name="twitter:title" content="Week5 and 6">
+  
+
+  
+  <meta name="twitter:description" content="Updates for the first exercise Following parts are modified or added in last two weeks: GUI Add button to respawn models in Gazebo and Rviz() Limitation of the joint value and home pose are specfied in a separated yaml file instead of hard coding Some modifications in visulization API All...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">GSoC 2020 Blog - Yijia Wu</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/aboutme">About Me</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Project</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/aboutproject">Introduction</a>
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/progress">Progress</a>
+            </div>
+          </li>
+        </ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">
+          <img alt="Navbar avatar" class="avatar-img" src="/colab-gsoc2020-Yijia_Wu/img/logo.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Week5 and 6</h1>
+      
+      
+      
+          <span class="post-meta">Posted on July 12, 2020</span>
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <h3 id="updates-for-the-first-exercise">Updates for the first exercise</h3>
+<p>Following parts are modified or added in last two weeks:</p>
+
+<p><strong>GUI</strong></p>
+<ul>
+  <li>Add button to respawn models in Gazebo and Rviz()</li>
+  <li>Limitation of the joint value and home pose are specfied in a separated yaml file instead of hard coding</li>
+  <li>Some modifications in visulization</li>
+</ul>
+
+<p><strong>API</strong><br />
+All APIs are rearranged in last two weeks. The full list of API can be found in the documentation of the first exercise.</p>
+
+<p><strong>Add model manager</strong><br />
+A model manager is added to manage(spawn or delete) the objects to be pick and place in both Gazebo and Rviz. All information about the objects, possible obstacles and targets are specified in a <code class="language-plaintext highlighter-rouge">model_info.yaml</code> file will be readed into the model manager.</p>
+
+<p><strong>World</strong><br />
+Some new models, including conveyor, table, boxes and ground, are generated and uploaded into a new Gazebo world. The mesh of models are generated and textures are attached in Blender. Then collision are added to the models with Gazebo model editor.</p>
+
+<p><strong>Solution</strong><br />
+An example new solution with the new world and APIs are implemented. It cannot promise to success each time for all the objects, but over 80 percent objects can be picked and placed successfully. The APIs are also improved a lot while writing the solution. The most useful new function is to specify some point of the gripper as TCP. With this functionality, it is much easier to tune the grasping parameter when the grasping direction is not perfectly vertical or horizontal.</p>
+
+<p><strong>Documentation of the first exercise</strong><br />
+The draft of the documentation of the first exercise is available in last post. It contains installation and usage guide, API and GUI introduction, Theory, Hints and a solution demonstration video.</p>
+
+<h3 id="start-building-the-second-exercise">Start building the second exercise</h3>
+<p>The world for second exercise is built as below. One kinect is fixed above the conveyor. Another kinect is fixed to the end of the UR5 robot. The robot and gripper in the second exercise are changed from irb120 robot and robotiq85 gripper to UR5 robot and vacuum gripper.</p>
+
+<p><img src="https://raw.githubusercontent.com/TheRoboticsClub/colab-gsoc2020-Yijia_Wu/master/docs/img/second_exercise_world.png" alt="second exercise world" class="mx-auto d-block" /></p>
+
+<p>One problem I am struggling is that the robot cannot stably start with a given pose in Gazebo world, which is also still <a href="https://github.com/ros-simulation/gazebo_ros_pkgs/issues/93">an open issue in gazebo_ros_pkg repo</a>. It sometimes works with some methods they proposed, but doesn’t work each time, so I think if it is not that important to directly spawn the robot with a desired pose in Gazebo, we can make it move to the desired pose later.</p>
+
+      </article>
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-07-02-draft_of_document_of_first_exercise/" data-toggle="tooltip" data-placement="top" title="Draft of document of first exercise">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-07-19-week7/" data-toggle="tooltip" data-placement="top" title="Week7">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+              
+  
+  
+  
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:sixerwyj@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/sixer51" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Yijia Wu
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/colab-gsoc2020-Yijia_Wu/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Week4</title>
+  
+  
+  <meta name="author" content="Yijia Wu">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="GSoC 2020 Blog - Yijia Wu - GSoC progress" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Week4">
+  
+
+   
+  <meta property="og:description" content="Improve pick and place in Gazebo Because the robot arm and gripper still sometimes cannot grasp the object, I spent some more time to try to improve it. Some works I have done are listed below. The main challenge is that the fail pick and place doesn’t happen each time,...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-25-week4/">
+  <link rel="canonical" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-25-week4/">
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  
+  <meta name="twitter:title" content="Week4">
+  
+
+  
+  <meta name="twitter:description" content="Improve pick and place in Gazebo Because the robot arm and gripper still sometimes cannot grasp the object, I spent some more time to try to improve it. Some works I have done are listed below. The main challenge is that the fail pick and place doesn’t happen each time,...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">GSoC 2020 Blog - Yijia Wu</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/aboutme">About Me</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Project</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/aboutproject">Introduction</a>
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/progress">Progress</a>
+            </div>
+          </li>
+        </ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">
+          <img alt="Navbar avatar" class="avatar-img" src="/colab-gsoc2020-Yijia_Wu/img/logo.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Week4</h1>
+      
+      
+      
+          <span class="post-meta">Posted on June 25, 2020</span>
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <h2 id="improve-pick-and-place-in-gazebo">Improve pick and place in Gazebo</h2>
+
+<p>Because the robot arm and gripper still sometimes cannot grasp the object, I spent some more time to try to improve it. Some works I have done are listed below. The main challenge is that the fail pick and place doesn’t happen each time, so I need to test multiple times to check does it truly works better after some modification. Sometime, even if it successfully finishs the task(pick and place three objects) for over three times which seems promising, it might fails after a while, so it is kind of hard for me to evaluate the result of modification without a benchmark testing tool.</p>
+
+<h3 id="change-controller-parameters">Change controller parameters</h3>
+
+<p>I mainly changed three kinds of parameters in ros controller: goal_time, stopped_velocity_tolerance, trajectory and goal tolerance. The most useful one is to change the trajectory and goal tolerance for each joints.</p>
+
+<p>Because I can always see some warnings as below, it seems that the controller violated the goal tolerence a lot, so I increased the goal tolerance for each joints at first, but the robot worked even worse after this modification and the warnings kept coming out with a larger goal tolerance. However, with a smaller tolerance, though the warning is still spawning, it actually provides a better start pose for next motion.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span> WARN]: Controller  failed with error GOAL_TOLERANCE_VIOLATED: 
+<span class="o">[</span> WARN]: Controller handle  reports status ABORTED
+
+<span class="o">[</span> WARN]: Fail: ABORTED: Solution found but controller failed during execution
+</code></pre></div></div>
+
+<h3 id="add-multiple-grasp-messages-to-pickup-function">Add multiple grasp messages to pickup() function</h3>
+
+<p>For box object, I specified four possible grasp poses with 90 degree step in yaw. For sphere and cylinder objects, I specified 12 possible grasps with 30 degree step in yaw. After this modification, the pickup() function can choose the one with highest success rate to execute.</p>
+
+<h3 id="provide-more-time-for-the-gripper-to-grasp-the-object">Provide more time for the gripper to grasp the object</h3>
+
+<p>Sometimes the gripper seems to stop after moving to the grasping position. However, when I zoom in to the gripper, I found that it is moving but in a very slow speed, so giving it more time to close the gripper can also contribute to stability.</p>
+
+<h3 id="change-planner-in-moveit">Change planner in Moveit</h3>
+
+<p>The default planner in MoveIt is RRT. There are 23 palnning methods can be choosed in the Open Motion Planning Library(OMPL). I could not see a obvious difference between the trajectory different planner get, so the original one is kept.</p>
+
+<h2 id="rqt_kinematics-plugin">rqt_kinematics plugin</h2>
+
+<p>The GUI I implemented is modified into a rqt plugin, so it can be loaded and shown together with other rqt plugins. All the button is usable now. With this GUI tool, we can easily debug and play with the robot.</p>
+
+<h2 id="preparation-of-the-first-exercise">Preparation of the first exercise</h2>
+
+<h3 id="world-in-gazebo">World in Gazebo</h3>
+
+<p>A table and container are added into the world file. All the objects are placed on the table and will be picked and placed to the container. The table can be changed into the conveyor. ARIAC provides a conveyor model, but it requires some modifications in collision model because when I put some objects on it, they will direcly drop to the ground.</p>
+
+<h3 id="first-version-api">first version API</h3>
+
+<p>Currently, I provides following API for the first exercise.</p>
+
+<h4 id="object-class">Object Class:</h4>
+<p>Object information are packaged in Object class. They are stored in <code class="language-plaintext highlighter-rouge">object_list</code> and can be accessed by providing the object name.</p>
+<ul>
+  <li>pose</li>
+  <li>height</li>
+  <li>width</li>
+  <li>shape</li>
+  <li>color</li>
+</ul>
+
+<h4 id="pick_place-class">Pick_Place Class</h4>
+<p>With integrated functions, users can quickly implement a solution to pick and place objects by providing their name.</p>
+
+<p><strong>Integrated Solution</strong></p>
+<ul>
+  <li>self.get_object_pose(object_name)</li>
+  <li>self.pickup(object_name, pose)</li>
+  <li>self.place(pose)</li>
+  <li>self.back_to_home()</li>
+</ul>
+
+<p>If the user wants to understand the pipeline better, some basic functions are also provided. With them and move_group API, they can also finish the pick and place task.</p>
+
+<p><strong>Basic functions</strong></p>
+<ul>
+  <li>self.get_object_width(object_name)</li>
+  <li>self.move_pose_arm(pose)</li>
+  <li>self.move_joint_arm(pose)</li>
+  <li>self.move_joint_hand(joint_value)</li>
+  <li>self.generate_grasps(object_name, pose)</li>
+  <li>self.pose2msg(roll, pitch, yaw, x, y, z)</li>
+  <li>self.msg2pose(pose)</li>
+</ul>
+
+<h4 id="move_group-api">move_group API:</h4>
+<ul>
+  <li>self.arm.stop()</li>
+  <li>self.arm.set_pose_target(pose)</li>
+  <li>self.arm.go()</li>
+  <li>self.arm.pick(object_name, grasp)</li>
+  <li>self.arm.place(placelocation)<br />
+More API for movegroup can be found <a href="http://docs.ros.org/melodic/api/moveit_commander/html/classmoveit__commander_1_1move__group_1_1MoveGroupCommander.html">here</a>.</li>
+</ul>
+
+      </article>
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-06-18-week3/" data-toggle="tooltip" data-placement="top" title="Week3">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-07-02-draft_of_document_of_first_exercise/" data-toggle="tooltip" data-placement="top" title="Draft of document of first exercise">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+              
+  
+  
+  
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:sixerwyj@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/sixer51" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Yijia Wu
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/colab-gsoc2020-Yijia_Wu/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

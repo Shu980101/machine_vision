@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Week1-2</title>
+  
+  
+  <meta name="author" content="Yijia Wu">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="GSoC 2020 Blog - Yijia Wu - GSoC progress" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Week1-2">
+  
+
+   
+  <meta property="og:description" content="First GUI template Because of the final exams in the first week, I actually started working since this Tuesday. Thanks for my mentor’s understanding again! In last meeting, we planed to start with making a GUI template for all the exercises I am going to develop for this project. This...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-11-week1_2/">
+  <link rel="canonical" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-11-week1_2/">
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  
+  <meta name="twitter:title" content="Week1-2">
+  
+
+  
+  <meta name="twitter:description" content="First GUI template Because of the final exams in the first week, I actually started working since this Tuesday. Thanks for my mentor’s understanding again! In last meeting, we planed to start with making a GUI template for all the exercises I am going to develop for this project. This...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">GSoC 2020 Blog - Yijia Wu</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/aboutme">About Me</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Project</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/aboutproject">Introduction</a>
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/progress">Progress</a>
+            </div>
+          </li>
+        </ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">
+          <img alt="Navbar avatar" class="avatar-img" src="/colab-gsoc2020-Yijia_Wu/img/logo.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Week1-2</h1>
+      
+      
+      
+          <span class="post-meta">Posted on June 11, 2020</span>
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <h2 id="first-gui-template">First GUI template</h2>
+
+<p>Because of the final exams in the first week, I actually started working since this Tuesday. Thanks for my mentor’s understanding again!<br />
+In last meeting, we planed to start with making a GUI template for all the exercises I am going to develop for this project. This template will need to include robot teleoperator, code management part, camera viewer and scene viewer.</p>
+
+<p>Before makeing GUI, I tested several provided ROS <a href="http://wiki.ros.org/rqt/Plugins#Robot-interaction_tools_.28rqt_robot_plugins.29">rqt plugins</a>, but only one of them might be useful for us. With “rqt_moveit” plugin, we can only monitor following informations:<br />
+Node: /move_group<br />
+Parameter: /robot_description, /robot_description_semantic<br />
+Topic: sensor_msgs/PointCloud, sensor_msgs/PointCloud2, sensor_msgs/Image, sensor_msgs/CameraInfo</p>
+
+<p>With “rqt_rviz” plugin, we load rviz interface, so it is exactly the same as launching rviz. The only useful one is <a href="http://wiki.ros.org/rqt_joint_trajectory_controller">rqt_joint_trajectory_controller</a>. We can choose controller group and change robot joints angle with it. An example interface is shown below.
+<img src="https://raw.githubusercontent.com/TheRoboticsClub/colab-gsoc2020-Yijia_Wu/master/docs/img/rqt_controller.png" alt="rqt_joint_controller" class="mx-auto d-block" /></p>
+
+<p>To develop GUI with python, I learned PyQt5 and used Qt designer to make a draft GUI as shown below. Currently, the camera viewer is connected with kinect camera topic, but the other parts still don’t connect with the robot. 
+<img src="https://raw.githubusercontent.com/TheRoboticsClub/colab-gsoc2020-Yijia_Wu/master/docs/img/draft_gui.png" alt="draft_gui" class="mx-auto d-block" /></p>
+
+<h2 id="more-stable-pick-and-place-in-gazebo">More Stable pick and place in Gazebo</h2>
+
+<p>Though both parallel gripper and vacuum gripper pick and place demo can work, they are still unstable as I mentioned in last blog. I mainly worked on the parallel gripper this week. It can grasp object much more stable than last week with some modifications in gazebo_grasp_fix plugin and related manually chosen parameters.</p>
+
+<h3 id="modification-of-gazebo_grasp_fix-plugin-and-parameters-tuning">Modification of gazebo_grasp_fix plugin and parameters tuning</h3>
+
+<p>In last demo, we can only see that sometimes the plugin doesn’t detact a grasp between gripper and object, so object cannot be picked up. I tried to change the provided variables, but it can just provide limited improvement. To have a better understanding of what is going on inside the plugin, I took a look of the source code of it. <strong>Some output are added to have a better understanding about why the plugin sometimes cannot grasp the object.</strong></p>
+
+<h4 id="forces_angle_tolerance">forces_angle_tolerance</h4>
+<p>By printing out some internal variable values, I found that it can detect contact between gripper finger and object, but the angle between two detected force vector is usually smaller than 90 degree, so no gripping behavior is identified. It may cost too much time to dig out how Gazebo compute contact vector, so finally I decide to <strong>remove the minimum 90 degree limitation in source code and use 80 degree as threshold angle.</strong></p>
+
+<h4 id="update_rate-and-grip_count_threshold">update_rate and grip_count_threshold</h4>
+<p>Another important parameter group is grip_count_threshold and update rate. Though I made the threshold degree smaller, the inaccurate contact force angle was still usually smaller than it. However, by reducing update rate to 2Hz and grip_count_threshold to 1, which means the plugin will check contact two times within one second, if one of them is detected as gripping, the object will be fixed to the gripper, the suceess gripping rate increases.</p>
+
+<p>The original plugin requires that the number of detected grip is more than grip_count_threshold, which requires at least two detected grips, but we usually can only detect one grip, so I change “&lt;” to “&lt;=”.</p>
+
+<h4 id="gripper-joint-moving-distance">gripper joint moving distance</h4>
+<p>The last significant parameter is how much the gripper close when grasping object which should be tuned according to the object size. For example, with a 4cm-thick box, 0 means fully open and 1 means fully closed, 0.46 is the best value to grasp the box. When using value smaller than 0.46, there would be no contact between fingers and object. When using value larger than 0.46, because the gripper joint is set as a spring-like object, it may cause the contact force vector more unstable. I also tried to use pick and place function in MoveIt to see if it can help to choose a proper gripping value. However, when the gripper finger is closed to object, the objected is already identified as gripped in MoveIt, even no contact force is detected to fix the object to the gripper.</p>
+
+<p>In conclusion, by reducing forces_angle_tolerance, update_rate and grip_count_threshold to a proper value, and tuning the gripping closing distance properly, we can increase the stability of grasping in Gazebo which seems to be good enough for our exercise.</p>
+
+      </article>
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-05-31-community_bonding_week4/" data-toggle="tooltip" data-placement="top" title="Community Bonding week4">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-06-18-week3/" data-toggle="tooltip" data-placement="top" title="Week3">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+              
+  
+  
+  
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:sixerwyj@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/sixer51" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Yijia Wu
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/colab-gsoc2020-Yijia_Wu/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

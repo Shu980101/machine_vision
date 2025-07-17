@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Community Bonding week4</title>
+  
+  
+  <meta name="author" content="Yijia Wu">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="GSoC 2020 Blog - Yijia Wu - GSoC progress" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Community Bonding week4">
+  
+
+   
+  <meta property="og:description" content="Pick and Place Demos in Gazebo In the last week of Community Bonding period, two pick and place demos are implemented in Gazebo, which are the bases of our first exercise. The demonstration videos can be seen by clicking following pictures. When preparing the project proposal, a pick demo with...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-05-31-community_bonding_week4/">
+  <link rel="canonical" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-05-31-community_bonding_week4/">
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  
+  <meta name="twitter:title" content="Community Bonding week4">
+  
+
+  
+  <meta name="twitter:description" content="Pick and Place Demos in Gazebo In the last week of Community Bonding period, two pick and place demos are implemented in Gazebo, which are the bases of our first exercise. The demonstration videos can be seen by clicking following pictures. When preparing the project proposal, a pick demo with...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">GSoC 2020 Blog - Yijia Wu</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/aboutme">About Me</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Project</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/aboutproject">Introduction</a>
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/progress">Progress</a>
+            </div>
+          </li>
+        </ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">
+          <img alt="Navbar avatar" class="avatar-img" src="/colab-gsoc2020-Yijia_Wu/img/logo.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Community Bonding week4</h1>
+      
+      
+      
+          <span class="post-meta">Posted on May 31, 2020</span>
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <h2 id="pick-and-place-demos-in-gazebo">Pick and Place Demos in Gazebo</h2>
+
+<p>In the last week of Community Bonding period, two pick and place demos are implemented in Gazebo, which are the bases of our first exercise. The demonstration videos can be seen by clicking following pictures.</p>
+
+<p>When preparing the project proposal, a <a href="https://www.youtube.com/watch?v=ztYnRgs7ipI">pick demo with irb120 manipulator and robotiq85 gripper was implemented in Rviz</a>, but we can only see the robot arm and gripper moving without seeing any objects in Gazebo because objects are generated in planning scene instead of Gazebo world. There were also some problems with planning and placing. In these two new demos, the robot is picking and placing objects in Gazebo world. I will discussed about the details of these two demos separatly.</p>
+
+<h3 id="pick-and-plaze-with-irb120-robot-arm-and-robotiq85-gripper">Pick and plaze with irb120 robot arm and robotiq85 gripper</h3>
+<p>To implement this demo, there are mainly two parts to be added based on the provided <a href="https://github.com/JdeRobot/IndustrialRobotics/tree/melodic-devel">industrial robot repo</a>. The first one is a world file with objects to be picked.  The second one is the <a href="https://github.com/jenniferBuehler/gazebo-pkgs/wiki/The-Gazebo-grasp-fix-plugin">gazebo_grasp_fix plugin</a>. The first part is easy, so I will only introduce the second part.</p>
+
+<p class="box-note"><strong>Note:</strong> The melodic version of our official <a href="https://github.com/JdeRobot/IndustrialRobotics/tree/melodic-devel">industrial robot repo</a> has been updated in the melodic-devel branch. Now users can follow the instrcution in that repo to start simulation with irb120 robot arm manipulator and robotiq85 gripper in Gazebo and Rviz. Example code of forward kinematic, inverse kinematic and Cartesian path planning are provided previously. A new example template of pick and place task will be updated later.</p>
+
+<p>The reason for using gazebo_grasp_fix plugin is that it is very hard to simulate grasping object with robot hand in Gazebo. Without it, you would easily see the object slipping off the robot hand all the time. It may be possible to make it work, but will require much time in tuning URDF and object property. It is suggested to use this plugin if simulating a good grasping behavior is not of immediate priority to a project. I tried to change some parameters such as friction coeffition, object weight, but none of them help to solve sliping problem, so finally I choose to use this plugin.</p>
+
+<p>The tutorial of using gazebo_grasp_fix plugin is <a href="https://github.com/jenniferBuehler/gazebo-pkgs/wiki/The-Gazebo-grasp-fix-plugin">here</a>. A challenge in using this plugin is to find what are the “palm_link” and “gripper_link” of your gripper. Palm_link is the link that finger joints are attached. Gripper_link are the links which are used to actively grasp objects. It seems to be clear, but actually not. You can’t direcly use the links defined in URDF because multiple links will be combined in Gazebo, but valid links can be found in Gazebo GUI. There is only one “palm_link” which is the root link of all “gripper_links” even if there are some other links connecting gripper links and palm link. Then “gripper_links” are links that will directly contact with objects. It might be confused for some grippers with complex structure.</p>
+
+<p>However, this plugin still doesn’t work very well in my demo. It sometimes cannot detect the contact between gripper links and objects which make the object slip off. I am still trying to figure out the reason for this problem to make this pick and place function work stably.</p>
+
+<p><a href="https://youtu.be/55z6pJ_YAt4"><img src="https://img.youtube.com/vi/55z6pJ_YAt4/0.jpg" alt="irb20 and robotiq85" class="mx-auto d-block" /></a></p>
+
+<h3 id="pick-and-place-with-ur5-robot-arm-and-vaccum-gripper">Pick and place with UR5 robot arm and vaccum gripper</h3>
+<p>This demo is based on <a href="https://github.com/ros-industrial/universal_robot">ROS-I universal robotics official repo</a> which I have tested last week. The main component of this demo is <a href="https://github.com/start-jsk/jsk_apc/blob/76db5dd1aab662f55a71e7e3157789ca1c018e21/jsk_2015_05_baxter_apc/robots/baxter.gazebo#L39-L69">gazebo_ros_vacuum_gripper plugin</a>. I also took <a href="https://github.com/lihuang3/ur5_ROS-Gazebo">Lihuang’s repo</a> which realizes pick and place with UR5 and vacuum gripper in ROS kinetic as reference.</p>
+
+<p><a href="https://youtu.be/SD70gaJ5XG4"><img src="https://img.youtube.com/vi/SD70gaJ5XG4/0.jpg" alt="ur5 and vacuum gripper" class="mx-auto d-block" /></a></p>
+
+<p>With Lihuang’s example package, it is easier to get the vacuum gripper work in Gazebo, but there are also some problems need to be solved. The first one is some spawning warnings saying the state of gripper links are unknown which doesn’t influence the simulation, but makes the terminal unclear to visulize some other information. The second one is that if I delete the camera link in URDF file which actually has no relationship with gripper, the grippers can no longer be generated. The last one is the limited force of each vacuum gripper. Multiple vacuum grippers are needed to grasp a small object.</p>
+
+      </article>
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-05-24-community_bonding_week3/" data-toggle="tooltip" data-placement="top" title="Community Bonding week3">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-06-11-week1_2/" data-toggle="tooltip" data-placement="top" title="Week1-2">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+              
+  
+  
+  
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:sixerwyj@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/sixer51" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Yijia Wu
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/colab-gsoc2020-Yijia_Wu/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

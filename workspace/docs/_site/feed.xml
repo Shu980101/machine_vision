@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    
+    <title>GSoC 2020 Blog - Yijia Wu</title>
+    
+    
+    <description>GSoC progress</description>
+    
+    <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu</link>
+    <atom:link href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Conclusion</title>
+        <description>
+          
+          Project Introduction The goal of this project is to develop a set of robot manipulation exercises with incremental complexity for JdeRobot Robotic Academy users. With these exercises, users can gain a better understanding of the processing of a manipulation task which mainly includes perception, planning and control. They can also...
+        </description>
+        <pubDate>Mon, 31 Aug 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-31-conclusion/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-31-conclusion/</guid>
+      </item>
+    
+      <item>
+        <title>Draft of document of third exercise</title>
+        <description>
+          
+          This is a draft of the documentation of third exercise. The goal of this exercise is to practice integrating navigation and manipulation. You will need to use a mobile manipulator(AGV+robot arm+gripper) to pick objects on one conveyor and place them on three other conveyors. The mobile manipulator is MMO-500 robot...
+        </description>
+        <pubDate>Fri, 28 Aug 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-28-draft_of_documentation_of_third_exercise/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-28-draft_of_documentation_of_third_exercise/</guid>
+      </item>
+    
+      <item>
+        <title>Week11_12</title>
+        <description>
+          
+          Navigation Navigation part is implemented by following steps. A map of the world is prebuilt using gmapping package. If we want to change the world, a new map need to be generated and saved. The amcl package is used to localize the robot. The odometry message of the robot will...
+        </description>
+        <pubDate>Tue, 25 Aug 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-25-week11_12/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-25-week11_12/</guid>
+      </item>
+    
+      <item>
+        <title>Week10</title>
+        <description>
+          
+          Test of AGV + robot arm + gripper The robot test is based on the mmo500 robot from Neobotix company. This company provides simulation packages to test their robots with ROS. This mmo500 robot contains an AGV with two lasers, a UR10 robot arm and a three-finger gripper from Shadow...
+        </description>
+        <pubDate>Sun, 09 Aug 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-09-week10/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-09-week10/</guid>
+      </item>
+    
+      <item>
+        <title>Week9</title>
+        <description>
+          
+          Convert Pointcloud to image The pcl_ros package provides a convert_pointcloud_to_image node to directly convert Pointcloud2 message to Image message, but it requires organized pointcloud which means each point in pointcloud corresponding to one image pixel. However, what we need to convert is filtered pointcloud which only contains points related to...
+        </description>
+        <pubDate>Sun, 02 Aug 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-02-week9/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-02-week9/</guid>
+      </item>
+    
+      <item>
+        <title>Draft of document of second exercise</title>
+        <description>
+          
+          This is a draft of the documentation of second exercise. The goal of this exercise is to learn how to use vision to assist industrial robot by detecting known objects and unknown obstcles. You will need to complete pick and place task using a robot arm and vacuum gripper. Two...
+        </description>
+        <pubDate>Sun, 02 Aug 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-02-draft_of_documentation_of_second_exercise/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-02-draft_of_documentation_of_second_exercise/</guid>
+      </item>
+    
+      <item>
+        <title>Week8</title>
+        <description>
+          
+          Object Detection with PCL Three objects are used for detection test: a blue ball, a red ball and a green cylinder. Input point cloud is the point cloud from the fixed kinect camera. With the color filter and shape segmentation functionality in PCL, the center and size of two balls...
+        </description>
+        <pubDate>Sun, 26 Jul 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-26-week8/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-26-week8/</guid>
+      </item>
+    
+      <item>
+        <title>Week7</title>
+        <description>
+          
+          GUI for the second exercise Two new plugins, rqt_vaccum_gripper and rqt_camera, are implemented for the second exercise. The rqt_vaccum_gripper plugin is based on the rqt_kinetic plugin. The slider for gripper joint is changed into grasp and release button because we will use vacuum gripper in the second exercise. The rqt_camera...
+        </description>
+        <pubDate>Sun, 19 Jul 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-19-week7/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-19-week7/</guid>
+      </item>
+    
+      <item>
+        <title>Week5 and 6</title>
+        <description>
+          
+          Updates for the first exercise Following parts are modified or added in last two weeks: GUI Add button to respawn models in Gazebo and Rviz() Limitation of the joint value and home pose are specfied in a separated yaml file instead of hard coding Some modifications in visulization API All...
+        </description>
+        <pubDate>Sun, 12 Jul 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-12-week5_6/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-12-week5_6/</guid>
+      </item>
+    
+      <item>
+        <title>Draft of document of first exercise</title>
+        <description>
+          
+          This is a draft of the document of first exercise. The goal of this exercise is to learn the underlying infrastructure of Industrial Robot exercises(ROS + MoveIt + our own industrial robotics API) and get familiar with the key components needed for more complex exercises by completing the task of...
+        </description>
+        <pubDate>Thu, 02 Jul 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-02-draft_of_document_of_first_exercise/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-02-draft_of_document_of_first_exercise/</guid>
+      </item>
+    
+      <item>
+        <title>Week4</title>
+        <description>
+          
+          Improve pick and place in Gazebo Because the robot arm and gripper still sometimes cannot grasp the object, I spent some more time to try to improve it. Some works I have done are listed below. The main challenge is that the fail pick and place doesn’t happen each time,...
+        </description>
+        <pubDate>Thu, 25 Jun 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-25-week4/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-25-week4/</guid>
+      </item>
+    
+      <item>
+        <title>Week3</title>
+        <description>
+          
+          Stable pick and place in Gazebo In this week, the robot can finally grasp the objects stably. I mentioned in last blog that when using MoveIt move group pick function, the gripper can grasp the object in Rviz, but cannot grasp it in Gazebo. However, if I set the grasping...
+        </description>
+        <pubDate>Thu, 18 Jun 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-18-week3/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-18-week3/</guid>
+      </item>
+    
+      <item>
+        <title>Week1-2</title>
+        <description>
+          
+          First GUI template Because of the final exams in the first week, I actually started working since this Tuesday. Thanks for my mentor’s understanding again! In last meeting, we planed to start with making a GUI template for all the exercises I am going to develop for this project. This...
+        </description>
+        <pubDate>Thu, 11 Jun 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-11-week1_2/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-06-11-week1_2/</guid>
+      </item>
+    
+      <item>
+        <title>Community Bonding week4</title>
+        <description>
+          
+          Pick and Place Demos in Gazebo In the last week of Community Bonding period, two pick and place demos are implemented in Gazebo, which are the bases of our first exercise. The demonstration videos can be seen by clicking following pictures. When preparing the project proposal, a pick demo with...
+        </description>
+        <pubDate>Sun, 31 May 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-05-31-community_bonding_week4/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-05-31-community_bonding_week4/</guid>
+      </item>
+    
+      <item>
+        <title>Community Bonding week3</title>
+        <description>
+          
+          Test available arm manipulator, gripper, AGV and world for ROS and Gazebo9 In our industrial robot repo, we provided model, related configuration files and example usage of manipulator abb irb 120 and gripper robotiq 85 in Gazebo and Rviz. Users can already use it to do some manipulation simulations. However,...
+        </description>
+        <pubDate>Sun, 24 May 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-05-24-community_bonding_week3/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-05-24-community_bonding_week3/</guid>
+      </item>
+    
+      <item>
+        <title>Community Bonding week1-2</title>
+        <description>
+          
+          Migrate the Industrial Robotics repo to Ubuntu 18.04 and ROS Melodic Previous repo has been tested in Ubuntu 16.04 and ROS kinetic. Except for getting familiar with Jderobot Academy, the first task of my Community Boning period is to migrate it to Ubuntu 18.04 and ROS Melodic. There are mainly...
+        </description>
+        <pubDate>Sun, 17 May 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-05-17-community_bonding_week1_2/</link>
+        <guid isPermaLink="true">http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-05-17-community_bonding_week1_2/</guid>
+      </item>
+    
+  </channel>
+</rss>

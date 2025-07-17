@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Week9</title>
+  
+  
+  <meta name="author" content="Yijia Wu">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="GSoC 2020 Blog - Yijia Wu - GSoC progress" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Week9">
+  
+
+   
+  <meta property="og:description" content="Convert Pointcloud to image The pcl_ros package provides a convert_pointcloud_to_image node to directly convert Pointcloud2 message to Image message, but it requires organized pointcloud which means each point in pointcloud corresponding to one image pixel. However, what we need to convert is filtered pointcloud which only contains points related to...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-02-week9/">
+  <link rel="canonical" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-02-week9/">
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  
+  <meta name="twitter:title" content="Week9">
+  
+
+  
+  <meta name="twitter:description" content="Convert Pointcloud to image The pcl_ros package provides a convert_pointcloud_to_image node to directly convert Pointcloud2 message to Image message, but it requires organized pointcloud which means each point in pointcloud corresponding to one image pixel. However, what we need to convert is filtered pointcloud which only contains points related to...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">GSoC 2020 Blog - Yijia Wu</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/aboutme">About Me</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Project</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/aboutproject">Introduction</a>
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/progress">Progress</a>
+            </div>
+          </li>
+        </ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">
+          <img alt="Navbar avatar" class="avatar-img" src="/colab-gsoc2020-Yijia_Wu/img/logo.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Week9</h1>
+      
+      
+      
+          <span class="post-meta">Posted on August 2, 2020</span>
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <h3 id="convert-pointcloud-to-image">Convert Pointcloud to image</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">pcl_ros</code> package provides a <code class="language-plaintext highlighter-rouge">convert_pointcloud_to_image</code> node to directly convert Pointcloud2 message to Image message, but it requires organized pointcloud which means each point in pointcloud corresponding to one image pixel. However, what we need to convert is filtered pointcloud which only contains points related to some features: color or shape. Finally I wrote two converters to convert <code class="language-plaintext highlighter-rouge">PointXYZRGB</code> format pointcloud to rgb image and <code class="language-plaintext highlighter-rouge">PointXYZ</code> format pointcloud to depth image.</p>
+
+<p>The original pointcloud from kinect camera and color-filtered pointcloud are <code class="language-plaintext highlighter-rouge">PointXYZRGB</code> format pointcloud. The final pointcloud from shape segmentation filter is <code class="language-plaintext highlighter-rouge">PointXYZ</code> format pointcloud. Currently, I run all the filter including color filter and shape segmentation filter at the same time, so it would be too slow to do all the convertions. To get a better visualiztaion result, I only convert the final version pointclouds which pass both color and shape filter to image message, and they can be visualized in our GUI. User can choose which topic they would like to see with the combo boxs.</p>
+
+<p><img src="https://raw.githubusercontent.com/TheRoboticsClub/colab-gsoc2020-Yijia_Wu/master/docs/img/pointcloud2img.png" alt="pointcloud2img" class="mx-auto d-block" /></p>
+
+<h3 id="improve-pick-and-place-with-vacuum-gripper">Improve pick and place with vacuum gripper</h3>
+
+<h4 id="improve-vacuum-gripper">Improve vacuum gripper</h4>
+<p>There were two issues with the vaccum gripper: limited force and easily to slip out when the robot arm moves too fast. For the first issue, I added some grippers and tried to increase the force, but there is still not obvious improvement. For the second issue, I rotates some grippers to provide more horizontal forces on the grasped object. With this method, the robot arm can move with a reasonable speed(speed in last week is too slow) when the end effector is vertical to the ground or when the path is smooth and orientation angle is not too big. However, when the arm suddenly change the moving direction which happens a lot, the objects will still drop off the gripper.</p>
+
+<h4 id="improve-motion-planning">Improve motion planning</h4>
+<p>Last week I added some joint constraints to limited the orientation of the end effector. It can helps a little. At least we won’t get some crazy trajectories with unusual up and down. In this week, I finally succeed in <strong>adding orientation constriants to make the end effector always vertical to the ground with small angle offset, but this constraint also make MoveIt cannot find a path in over 50% placing process</strong>. To get the planning success rate increase, I have to increase the orientation constraint tolerance. In addition, the collision avoidance functionality is also not perfect which makes the object sometimes collide with the obstacles because the distance to obstacles is too small.</p>
+
+<p>I also tried some other methods and have some ideas about improving the performance.</p>
+<ul>
+  <li><strong>Changing collision model from sphere and cylnder to box can help a lot.</strong> It is what I have done last week. Without this modification, it is even hard to grasp the objects up. I also tried to make the collsion model thinner, which doesn’t help.</li>
+  <li>Changing path planning solver might help. Trac-IK solver seems to have higher success rate in planning trajectory, but I also get much more controller failure with the path planned by this solver. These failures are still unsolveable to me.</li>
+  <li>Wait for improvement in MoveIt or try MoveIt2 to get better planning performance. There is a related ongoing GSoC project called <a href="https://github.com/ros-planning/moveit/issues/2092"><code class="language-plaintext highlighter-rouge">Motion planning with general end-effector constraints in MoveIt</code></a>. I am looking forward to the result of it.</li>
+  <li>Improve vacuum gripper plugin. If the plugin can provide a similar functionality to attach the object link to end effector link like the grasp plugin, we don’t need to worry about slipping or droping any more.</li>
+</ul>
+
+<p>They are both possible improving methods, but requires more time to test. Considering the time limit, I would perfer to record these problems  and possible solution down and move forward.</p>
+
+<h4 id="assign-obstacles">Assign obstacles</h4>
+<p>According the current behavior of the vacuum gripper, I modified the position and size of the obstacles to avoid getting path with a big up and down, but also make obstacle avoidance visualizable. With this setup, if the robot don’t know where the obstacles are, it will definitly collide with the cylinder or the side of the board. Aftering building map with obstacles, MoveIt also don’t need to plan a path to move the robot arm up to across the obstacles.</p>
+
+<p><img src="https://raw.githubusercontent.com/TheRoboticsClub/colab-gsoc2020-Yijia_Wu/master/docs/img/obstacle_setup.png" alt="Obstacle setup" class="mx-auto d-block" /></p>
+
+<h3 id="publish-exercise-one-to-official-repo">Publish exercise one to official repo</h3>
+
+<p>I reconfigured the code of two exercises to make MyAlgorithm.py file, which is provied for students to implement their algorithm, fully separated with other packages. Currently, the structure of industrial robot exercise is as follows.</p>
+
+<p>IndustrialRobot repo:</p>
+<ul>
+  <li>exercise_one
+    <ul>
+      <li>gazebo-pkgs</li>
+      <li>abb_experimental</li>
+      <li>rqbotiq_b5_gripper</li>
+      <li>irb120_robotiq85</li>
+    </ul>
+  </li>
+  <li>exercise_two
+    <ul>
+      <li>pcl_filter</li>
+      <li>universal_robot</li>
+      <li>ur5_gripper_demo</li>
+    </ul>
+  </li>
+  <li>industrial_robot
+    <ul>
+      <li>launch</li>
+      <li>models</li>
+    </ul>
+  </li>
+  <li>rqt_industrial_robot
+    <ul>
+      <li>resources</li>
+      <li>scripts</li>
+      <li>src</li>
+      <li>perspectives</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Exercise folder:</p>
+<ul>
+  <li>exercise_one
+    <ul>
+      <li>MyAlgorithm.py</li>
+      <li>pick_and_place.py</li>
+    </ul>
+  </li>
+  <li>exercise_two
+    <ul>
+      <li>MyAlgorithm.py</li>
+      <li>pick_and_place.py</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Inside <a href="https://github.com/JdeRobot/IndustrialRobotics">IndustrialRobot repo</a>, the <code class="language-plaintext highlighter-rouge">exercise_one</code> and <code class="language-plaintext highlighter-rouge">exercise_two</code> folders contains important dependency code for each exercise. The <code class="language-plaintext highlighter-rouge">industrial_robot</code> folder contains Gazebo models shared by exercises and final version launch file to start exercises. The <code class="language-plaintext highlighter-rouge">rqt_industrial_robot</code> folder contains code related to GUI.</p>
+
+<p>The exercise folder and documentations of exercises will be placed with other exercises in <a href="https://github.com/JdeRobot/RoboticsAcademy">JdeRobot Accademy repo</a>.</p>
+
+<p>Two Pull Requests have been made in these two repos to upload the first exercise: Pick and Place.</p>
+
+      </article>
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-08-02-draft_of_documentation_of_second_exercise/" data-toggle="tooltip" data-placement="top" title="Draft of document of second exercise">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-08-09-week10/" data-toggle="tooltip" data-placement="top" title="Week10">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+              
+  
+  
+  
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:sixerwyj@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/sixer51" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Yijia Wu
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/colab-gsoc2020-Yijia_Wu/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Week8</title>
+  
+  
+  <meta name="author" content="Yijia Wu">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="GSoC 2020 Blog - Yijia Wu - GSoC progress" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Week8">
+  
+
+   
+  <meta property="og:description" content="Object Detection with PCL Three objects are used for detection test: a blue ball, a red ball and a green cylinder. Input point cloud is the point cloud from the fixed kinect camera. With the color filter and shape segmentation functionality in PCL, the center and size of two balls...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-26-week8/">
+  <link rel="canonical" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-07-26-week8/">
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  
+  <meta name="twitter:title" content="Week8">
+  
+
+  
+  <meta name="twitter:description" content="Object Detection with PCL Three objects are used for detection test: a blue ball, a red ball and a green cylinder. Input point cloud is the point cloud from the fixed kinect camera. With the color filter and shape segmentation functionality in PCL, the center and size of two balls...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">GSoC 2020 Blog - Yijia Wu</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/aboutme">About Me</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Project</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/aboutproject">Introduction</a>
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/progress">Progress</a>
+            </div>
+          </li>
+        </ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">
+          <img alt="Navbar avatar" class="avatar-img" src="/colab-gsoc2020-Yijia_Wu/img/logo.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Week8</h1>
+      
+      
+      
+          <span class="post-meta">Posted on July 26, 2020</span>
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <h3 id="object-detection-with-pcl">Object Detection with PCL</h3>
+
+<p>Three objects are used for detection test: a blue ball, a red ball and a green cylinder. Input point cloud is the point cloud from the fixed kinect camera. With the color filter and shape segmentation functionality in PCL, the center and size of two balls can be detected accurately(less than 1cm error). For the cylinder, the height can not be detected, but a point in the cylinder center axis will be given. The position of the center of ball and the point in cylinder axis will be broadcasted to tf. This part is implemented with C++. Then in our main python class, we can get the object position from tf.</p>
+
+<p>One limitation of this detection method is that the camera should be closed to the objects in order to have more points representing the object. That is the reason why I moved the fixed kinect. If the object is smaller or the distance is farther, PCL cannot detect the sphere or cylinder from the point cloud.</p>
+
+<p><img src="https://raw.githubusercontent.com/TheRoboticsClub/colab-gsoc2020-Yijia_Wu/master/docs/img/object_detection_pcl.png" alt="Object Detection with PCL" class="mx-auto d-block" /></p>
+
+<h3 id="obstacle-detection-and-avoidance">Obstacle Detection and Avoidance</h3>
+
+<h4 id="how-to-make-robot-and-objects-separated-with-other-obstacles-in-the-environment">How to make robot and objects separated with other obstacles in the environment?</h4>
+<p>Instead of using octomap server in last week, I changed to use <code class="language-plaintext highlighter-rouge">occupancy_map_monitor/PointCloudOctomapUpdater</code> to update the octomap with the kinect in the end of robot arm. Obstacles will be directly added into planning scene. Robot will not be considered as obstacles with this plugin. If object models are added into planning scene, space around them will not be included in the octomap.</p>
+
+<h4 id="will-object-be-seen-as-obstacles-if-their-models-are-added-into-planning-scene">Will object be seen as obstacles if their models are added into planning scene?</h4>
+<p>I mentioned that object models in planning scene will be considered as obstacles, but it actually doesn’t matter because the vacuum gripper don’t need to make contact with them. A small distance is good enough.</p>
+
+<p>Another advantage of adding models into plannning scene is that they can be considered into planning process. If they are not inside the planning scene and not attached to the robot, MoveIt will only consider the collision between robot and world, so object might collide with the world even if the robot arm is free of collision.</p>
+
+<h4 id="which-octomap-resolution-should-be-chosen">Which octomap resolution should be chosen?</h4>
+<p>Without the models, the part of octomap representing objects might be larger than the actual size which makes the gripper cannot grasp them, so high resolution is needed, but last answer shows that we can add models without any concern. With some tests, 2.5cm seems to be a good resolution value which is not be that time consuming and good enough to represent obstacles.</p>
+
+<h4 id="how-to-get-the-map-of-the-whole-surrounding-environment">How to get the map of the whole surrounding environment?</h4>
+<p>Before starting picking and placing, we can rotate the robot arm to look around and build the map of surrounding environment. I tried to use the fixed kinect camera at first, but some parts of the world cannot be detected because of the limited field of view and occlusion.</p>
+
+<p><img src="https://raw.githubusercontent.com/TheRoboticsClub/colab-gsoc2020-Yijia_Wu/master/docs/img/octomap_with_kinect_on_robot.png" alt="octomap_with_kinect_on_robot" class="mx-auto d-block" /></p>
+
+<h3 id="pick-and-place-with-vacuum-gripper">Pick and Place with Vacuum Gripper</h3>
+
+<h4 id="spawning-warning-and-error">Spawning warning and error</h4>
+<p>The warning and error messages are finally removed by publishing joint state including the state of vacuum gripper joints. There are still some warnings and errors in the beginning, but after robot moving to home pose and GUI showing up, no more warnings about the state problem will pop out.</p>
+
+<h4 id="unstable-grasping">Unstable grasping</h4>
+<p>When the vacuum gripper is turned on, a force along gripper center axis will be added to the object. Because the force is limited and directional, so when the vertical force is smaller than gravity, the object will drop out. Therefore, when the gripper is not vertical to the ground or the moving speed of the robot is fast, the object cannot be keep with the gripper. To solve this problems, I added some path constraints and slowed down the moving speed when grasping objects. However, the path constraints are not super strict, otherwise, no motion plan can be found, so <strong>the objects somtimes still drop off because of the gripper orientation problem. The moving speed is also a bit too slow which take a longer time to run.</strong></p>
+
+<h3 id="improvement-for-exercise-one">Improvement for exercise one</h3>
+<ul>
+  <li>keep big logo for exercise 1 and use small logo for exercise 2</li>
+  <li>update gui when running algorithm</li>
+  <li>add API to print message in message box</li>
+  <li>pause button</li>
+  <li>speed up GUI opening</li>
+  <li>return object info separatly</li>
+  <li>remove extra light</li>
+  <li>place objects with bigger distance</li>
+</ul>
+
+      </article>
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-07-19-week7/" data-toggle="tooltip" data-placement="top" title="Week7">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-08-02-draft_of_documentation_of_second_exercise/" data-toggle="tooltip" data-placement="top" title="Draft of document of second exercise">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+              
+  
+  
+  
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:sixerwyj@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/sixer51" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Yijia Wu
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/colab-gsoc2020-Yijia_Wu/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

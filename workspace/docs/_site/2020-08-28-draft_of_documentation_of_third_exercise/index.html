@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2020 -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Draft of document of third exercise</title>
+  
+  
+  <meta name="author" content="Yijia Wu">
+  
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="GSoC 2020 Blog - Yijia Wu - GSoC progress" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/colab-gsoc2020-Yijia_Wu/assets/css/main.css">
+    
+  
+
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Draft of document of third exercise">
+  
+
+   
+  <meta property="og:description" content="This is a draft of the documentation of third exercise. The goal of this exercise is to practice integrating navigation and manipulation. You will need to use a mobile manipulator(AGV+robot arm+gripper) to pick objects on one conveyor and place them on three other conveyors. The mobile manipulator is MMO-500 robot...">
+  
+
+
+  <meta property="og:type" content="website">
+
+  
+  <meta property="og:url" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-28-draft_of_documentation_of_third_exercise/">
+  <link rel="canonical" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu/2020-08-28-draft_of_documentation_of_third_exercise/">
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  
+  <meta name="twitter:title" content="Draft of document of third exercise">
+  
+
+  
+  <meta name="twitter:description" content="This is a draft of the documentation of third exercise. The goal of this exercise is to practice integrating navigation and manipulation. You will need to use a mobile manipulator(AGV+robot arm+gripper) to pick objects on one conveyor and place them on three other conveyors. The mobile manipulator is MMO-500 robot...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/colab-gsoc2020-Yijia_Wu/img/logo.png">
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom "><a class="navbar-brand" href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">GSoC 2020 Blog - Yijia Wu</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/colab-gsoc2020-Yijia_Wu/aboutme">About Me</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Project</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/aboutproject">Introduction</a>
+                  <a class="dropdown-item" href="/colab-gsoc2020-Yijia_Wu/progress">Progress</a>
+            </div>
+          </li>
+        </ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/colab-gsoc2020-Yijia_Wu">
+          <img alt="Navbar avatar" class="avatar-img" src="/colab-gsoc2020-Yijia_Wu/img/logo.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Draft of document of third exercise</h1>
+      
+      
+      
+          <span class="post-meta">Posted on August 28, 2020</span>
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container-md">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <p><strong>This is a draft of the documentation of third exercise.</strong></p>
+
+<p>The goal of this exercise is to practice integrating navigation and manipulation. You will need to use a mobile manipulator(AGV+robot arm+gripper) to pick objects on one conveyor and place them on three other conveyors.</p>
+
+<p>The mobile manipulator is MMO-500 robot from <a href="https://www.neobotix-robots.com/homepage">Neobotix</a>. They provides a set of ROS simulation packages and tutorials to test their mobile robot and mobile manipulators in ROS[1]. The MMO-500 is one of them, combineing the omnidirectional robot MPO-500 with a light-weight robot arm UR10. The navigation part of this robot is based on their provided packages.</p>
+
+<p><img src="https://raw.githubusercontent.com/TheRoboticsClub/colab-gsoc2020-Yijia_Wu/master/docs/img/world_third_exercise.png" alt="world" class="mx-auto d-block" /></p>
+
+<p><img src="https://raw.githubusercontent.com/TheRoboticsClub/colab-gsoc2020-Yijia_Wu/master/docs/img/rviz_third_exercise.png" alt="rviz" class="mx-auto d-block" /></p>
+
+<h2 id="installation">Installation</h2>
+<ol>
+  <li>Install the <a href="https://jderobot.github.io/RoboticsAcademy/installation/#generic-infrastructure">General Infrastructure</a> of the JdeRobot Robotics Academy.</li>
+  <li>Install
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>ros-melodic-eband-local-planner
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>ros-melodic-amcl
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>ros-melodic-openslam-gmapping
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>ros-melodic-navigation
+</code></pre></div>    </div>
+  </li>
+  <li>Install Industrial Robot package
+If you have done this part in other Industrial Robots exercises, you can skip to next section.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> catkin_ws/src
+<span class="nb">cd </span>catkin_ws/src
+</code></pre></div>    </div>
+    <p>after pull request to the industrial robot repo</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/JdeRobot/IndustrialRobotics.git <span class="nt">-b</span> pick_place_basic
+<span class="nb">cd</span> ..
+</code></pre></div>    </div>
+    <p>Update ROS dependencies</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosdep update
+rosdep check <span class="nt">--from-paths</span> <span class="nb">.</span> <span class="nt">--ignore-src</span> <span class="nt">--rosdistro</span> melodic
+rosdep <span class="nb">install</span> <span class="nt">--from-paths</span> <span class="nb">.</span> <span class="nt">--ignore-src</span> <span class="nt">--rosdistro</span> melodic <span class="nt">-y</span>
+</code></pre></div>    </div>
+    <p>Build workspace</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>catkin build
+</code></pre></div>    </div>
+    <p>Export environment variables</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'source '</span><span class="nv">$PWD</span><span class="s1">'/devel/setup.bash'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">echo</span> <span class="s1">'export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:'</span><span class="nv">$PWD</span><span class="s1">'/src/IndustrialRobotics/assets/models'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">source</span> ~/.bashrc
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="how-to-run-the-exercise">How to run the exercise</h2>
+<p>Tp launch the exercise, open a terminal windows, navigate to navigate to <code class="language-plaintext highlighter-rouge">mobile_manipulation</code> folder inside <code class="language-plaintext highlighter-rouge">exercises</code> folder and execute following command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>roslaunch mobile_manipulation.launch 
+</code></pre></div></div>
+<p>Two different windows will pop up:</p>
+<ul>
+  <li><strong>Gazebo simulator</strong>: A warehouse environment with a industrial robot(robot arm and gripper), multiple objects, a conveyor and two boxes will be shown in Gazebo.</li>
+  <li><strong>Rviz</strong>: A mobile manipulator, map and laser detected obstacle points will be shown in Rviz.</li>
+</ul>
+
+<p>When you see <code class="language-plaintext highlighter-rouge">You can start planning now!</code>, open a new terminal window, navigate to <code class="language-plaintext highlighter-rouge">mobile_manipulation</code> folder inside <code class="language-plaintext highlighter-rouge">exercises</code> folder and execute following command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>roslaunch mobile_manipulation_gui.launch 
+</code></pre></div></div>
+<p>The mobile manipulator teleoperator GUI will pop up and objects will be spawned in Gazebo.</p>
+<ul>
+  <li><strong>mobile manipulator teleoperator</strong>: A GUI which provideds following functionalities:
+    <ul>
+      <li>A Forward Kinematics teleoperator providing sliders to change the angle of each joint of the robot arm and the gripper. The limits of each joints are shown in the two sides of the slider. The true angle of the joints are shown in the text box beside the sliders.</li>
+      <li>An Inverse Kinematics teleoperator allowing users to set the desired end effector pose.
+        <ul>
+          <li>Plan button can plan the trajectory to the desired pose</li>
+          <li>Excute button can make the robot execute the planned trajectory</li>
+          <li>Plan &amp; Execute button is the integration of last two buttons</li>
+          <li>Stop button allows users to stop the robot</li>
+          <li>Back to home button can make the robot move back to home pose</li>
+        </ul>
+      </li>
+      <li>Two update button can update the value of current robot state</li>
+      <li>Code Manager part
+        <ul>
+          <li>Four buttons to start, stop, pause and restart the main code you program</li>
+          <li>One button to launch Rviz</li>
+          <li>One button to Respawn all objects in Gazebo and Rviz</li>
+          <li>An info box showing the status of the main code(“start” or “stop”)</li>
+        </ul>
+      </li>
+      <li>Robot Steering part to send velocity signal to move mobile robot.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/TheRoboticsClub/colab-gsoc2020-Yijia_Wu/master/docs/img/GUI_third_exercise.png" alt="GUI" class="mx-auto d-block" /></p>
+
+<p>Then open a new terminal window, navigate to <code class="language-plaintext highlighter-rouge">mobile_manipulation</code> folder inside <code class="language-plaintext highlighter-rouge">exercises</code> folder and execute following command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python MyAlgorithm.py
+</code></pre></div></div>
+<p>You can start running the algorithm with the start button when you see <code class="language-plaintext highlighter-rouge">You can start your algorithm with GUI</code> in the terminal.</p>
+
+<h2 id="how-should-i-solve-the-exercise">How should I solve the exercise</h2>
+<p>To solve the exercise, you must edit the MyAlgorithm.py file and insert control logic in myalgorithm() function. Before writing the main logic, you should implement move_to() function to navigate and move mobile robot to given target.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">move_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_name</span><span class="p">):</span>
+    <span class="c1">############## Insert your code here ###############
+</span>
+    <span class="c1">####################################################
+</span>
+<span class="k">def</span> <span class="nf">myalgorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stopevent</span><span class="p">,</span> <span class="n">pauseevent</span><span class="p">):</span>
+	<span class="c1">############## Insert your code here ###############
+</span>    <span class="c1"># Move the robot arm back to home as a start
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">pick_place</span><span class="p">.</span><span class="n">back_to_home</span><span class="p">()</span>
+	
+    <span class="c1"># insert following two lines where you want to pause or stop the algorithm 
+</span>    <span class="c1"># with the stop button in GUI
+</span>    <span class="k">while</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="p">.</span><span class="n">pauseevent</span><span class="p">.</span><span class="n">isSet</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="p">.</span><span class="n">stopevent</span><span class="p">.</span><span class="n">isSet</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">.</span><span class="n">stopevent</span><span class="p">.</span><span class="n">isSet</span><span class="p">():</span>
+            <span class="k">return</span>
+
+    <span class="c1">##### A brief example to pick green cylinder on conveyor1 and place it to conveyor2 #####
+</span>
+    <span class="c1">## Move to the target pose to stop in front of conveyor1
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">move_to</span><span class="p">(</span><span class="s">"conveyor1"</span><span class="p">)</span>
+
+    <span class="c1">## Pick green cylinder
+</span>
+    <span class="c1">## Move to the target pose to stop in front of conveyor2
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">move_to</span><span class="p">(</span><span class="s">"conveyor2"</span><span class="p">)</span>
+
+    <span class="c1">## Place green cylinder
+</span>    
+    <span class="c1">####################################################
+</span></code></pre></div></div>
+
+<h2 id="api">API</h2>
+<h3 id="navigation">Navigation</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">self.client.get_target_pose(target_name)</code> - get the goal pose of the robot to stop in front of conveyor with target_name. The goal pose for each stop position is specified in <code class="language-plaintext highlighter-rouge">navigation.yaml</code> file.</li>
+  <li><code class="language-plaintext highlighter-rouge">self.client.send_goal_to_client(pose)</code> - send the goal pose to move_base client.</li>
+  <li><code class="language-plaintext highlighter-rouge">self.client.get_result_from_client()</code> - get navigation result from client. If the result is <code class="language-plaintext highlighter-rouge">True</code>, navigation is finished.</li>
+</ul>
+
+<p>Following APIs are provided in Pick_Place class, so you should allways add “self.pick_place.” as a prefix to following introduced APIs in your algorithm.</p>
+<h3 id="environment-information">Environment Information</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">get_object_list()</code> - Return the name list of all objects.</li>
+  <li><code class="language-plaintext highlighter-rouge">get_object_info(object_name)</code> - Return the height, width, length, shape, color of the object in order.</li>
+  <li><code class="language-plaintext highlighter-rouge">get_object_pose(object_name)</code> - Return the pose of object in the robot arm frame.</li>
+  <li><code class="language-plaintext highlighter-rouge">get_target_list()</code> - Return the name list of all targets.</li>
+  <li><code class="language-plaintext highlighter-rouge">get_target_position(target_name)</code> - Return the position of target where we are going to place the objects.</li>
+  <li><code class="language-plaintext highlighter-rouge">get_target_pose(target_name)</code> - Return the pose(x, y, theta) where the robot will stop in front of the target conveyor.</li>
+</ul>
+
+<h3 id="convert-pose-message">Convert Pose Message</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pose2msg(roll, pitch, yaw, x, y, z)</code> - Convert pose to Pose message. The unit of roll, pitch, yaw is radian.</li>
+  <li><code class="language-plaintext highlighter-rouge">pose2msg_deg(roll, pitch, yaw, x, y, z)</code> - Convert pose to Pose message. The unit of roll, pitch, yaw is degree.</li>
+  <li><code class="language-plaintext highlighter-rouge">msg2pose(pose)</code> - Convert Pose message to pose, return roll, pitch, yaw, x, y, z in order. The unit of roll, pitch, yaw is radian.</li>
+  <li><code class="language-plaintext highlighter-rouge">msg2pose_deg(pose)</code> - Convert Pose message to pose, return roll, pitch, yaw, x, y, z in order. The unit of roll, pitch, yaw is degree.</li>
+</ul>
+
+<h3 id="basic-robot-movement">Basic Robot Movement</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">move_pose_arm(pose_goal)</code> - Command the robot with Pose message to make its end effector frame move to the desired pose with inverse kinematics.</li>
+  <li><code class="language-plaintext highlighter-rouge">move_joint_arm(joint_0,joint_1,joint_2,joint_3,joint_4,joint_5)</code> - Command the robot joints to move to desired joints value.</li>
+  <li><code class="language-plaintext highlighter-rouge">move_joint_hand(finger1_goal[, finger2_goal = 10, finger3_goal = 10])</code> - Command the gripper finger joint to goal value. If <code class="language-plaintext highlighter-rouge">finger2_goal</code> and <code class="language-plaintext highlighter-rouge">finger3_goal</code> are kept as 10, they will set to be the same as <code class="language-plaintext highlighter-rouge">finger1_goal</code>. The range of finger goal value is [-1.57, 1.57].</li>
+  <li><code class="language-plaintext highlighter-rouge">back_to_home([move_gripper=True])</code> - Command the robot arm and gripper to move back to the home pose for moving process. If <code class="language-plaintext highlighter-rouge">move_group</code> is set to to False, the gripper won’t move.</li>
+  <li><code class="language-plaintext highlighter-rouge">move_to_pick_place_home([move_gripper=True])</code> - Command the robot arm and gripper to move back to the home pose to get ready for pick or place. If <code class="language-plaintext highlighter-rouge">move_group</code> is set to to False, the gripper won’t move.</li>
+</ul>
+
+<h3 id="manage-objects-and-obstacles-in-planning-scene">Manage Objects and Obstacles in Planning Scene</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">spawn_all_objects()</code> - Spawn all the model of objects ready to be picked in planning scene.</li>
+  <li><code class="language-plaintext highlighter-rouge">spawn_obstacle_rviz(obstacle_name)</code> - Spawn the model of obstacle in planning scene.</li>
+  <li><code class="language-plaintext highlighter-rouge">clean_scene(object_name)</code> - Remove the model of object of obstacle in planning scene.</li>
+  <li><code class="language-plaintext highlighter-rouge">clean_all_objects_in_scene()</code> - Remove all the model of objects ready to be picked in planning scene.</li>
+</ul>
+
+<h3 id="pick-and-place">Pick and Place</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pickup(object_name, position, width[, distance = 0.12])</code> - Command the industrial robot to pick up the object by moving the end effextor to given position. Width is the goal gripper joint value. Distance is the distance the robot arm will move in z axis before and after grasping objects.</li>
+  <li><code class="language-plaintext highlighter-rouge">place(object_name, position[, width = -0.2, distance = 0.12])</code> - Command the industrial robot to place the object by moving the end effextor to given position. Width is the goal gripper joint value. Distance is the distance the robot arm will move in z axis before and after placing objects.</li>
+</ul>
+
+<h2 id="theory">Theory</h2>
+
+<h3 id="navigation-1">Navigation</h3>
+<p>Navigation part is implemented by following steps. It is based on the simulation packages from Neobotix which integrated <code class="language-plaintext highlighter-rouge">amcl</code>, <code class="language-plaintext highlighter-rouge">gmapping</code>, <code class="language-plaintext highlighter-rouge">eband_local_planner</code> and some other related packages. If you are interested in the details of navigation implementation in ROS, check out their <a href="https://docs.neobotix.de/display/ROSSim/ROS-Simulation">tutorial website</a>.</p>
+<ol>
+  <li><strong>Built the map of the world</strong>: A map of the world is prebuilt using <code class="language-plaintext highlighter-rouge">gmapping</code> package. If we want to change the world, a new map need to be generated and saved.</li>
+  <li><strong>Localization</strong>: The <code class="language-plaintext highlighter-rouge">amcl</code> package is used to localize the robot. The odometry message of the robot will be published in <code class="language-plaintext highlighter-rouge">/odom</code> topic which contains the pose between robot <code class="language-plaintext highlighter-rouge">base_link</code> and <code class="language-plaintext highlighter-rouge">odom</code> frame.</li>
+  <li><strong>Navigation</strong>: The <code class="language-plaintext highlighter-rouge">move_base</code> package will use both global planning and local planning to plan a path to the goal position, and drive the robot to achieve it.</li>
+</ol>
+
+<h3 id="manipulation">Manipulation</h3>
+<p>Manipulation part is implemented by following steps.</p>
+<ol>
+  <li><strong>Load object info</strong>: Load the information of objects and obstacles from yaml file, including absolute pose, size, shape, color.</li>
+  <li><strong>Move to pick position</strong>: Make the robot stops in target position in front of the conveyor.</li>
+  <li><strong>Pick up object</strong>
+    <ul>
+      <li>Move the robot arm to home position for pick and place task.</li>
+      <li>Get robot pose from <code class="language-plaintext highlighter-rouge">/odom</code> topic and caculate the relative pose between object and robot.</li>
+      <li>Spawn the model of objects and conveyor into planning scene.</li>
+      <li>Move to some distance above the object, move down and grasp the object.</li>
+      <li>Delete the model of objects and conveyor in planning scene.</li>
+    </ul>
+  </li>
+  <li><strong>Move to place position</strong>: Move robot arm to home position with the object in the gripper and move the mobile robot to the target postion.</li>
+  <li><strong>Place object</strong>
+    <ul>
+      <li>Move the robot arm to home position for pick and place task.</li>
+      <li>Get robot pose from <code class="language-plaintext highlighter-rouge">/odom</code> topic and transform the place target position from world frame to robot frame.</li>
+      <li>Spawn the model of conveyor into planning scene.</li>
+      <li>Move to some distance above the object, move down and grasp the object.</li>
+      <li>Delete the model of conveyor in planning scene.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="hints">Hints</h2>
+
+<h3 id="how-to-get-the-object-pose-and-pick-it-up">How to get the object pose and pick it up?</h3>
+<p>Motion planning for the robot arm is done by MoveIt in robot arm frame, so we need to know where are the objects we are going to grasp and where are obstacles and goal position to place objects.
+The poses of objects and obstacles in the world frame are known and assumed to be fixed until the objects are picked up. The robot pose and transformation between the base link of mobile manipulator and the base link of robot arm are also available, so the poses of objects and obstacles in robot arm frame can be computed. This part is implemented implicitly in API and available in get_object_position() and get_target_position(), but you still need to add objects and objects into planning scene before picking or placeing and clean them before mobile robot moving to next position in the world.</p>
+
+<h3 id="why-does-the-gripper-cannot-stably-grasp-and-release-the-object">Why does the gripper cannot stably grasp and release the object?</h3>
+<p>We are using gazebo_grasp_fix plugin for this exercise and the Pick Place exercise which compute the force vector between fingers to check collision and distance between object and fingers to decide whether release the object. It is because Gazebo cannot well simulates manipulation behavior. JUst keep in mind that though you might see the object shaking when the gripper is graspping it in simulation, it can usually success in the same condition in real world.
+The input <code class="language-plaintext highlighter-rouge">position</code> for pickup() and place() function are both the position for the end of the gripper in releasing mode. The output position of get_object_position() is the position of the center of the object. Therefore, because when the gripper is grasping, final end point position will change, please remember to tune the input position to pick and place. In addition, grasping sphere is the most</p>
+
+<h3 id="why-does-the-mobile-robot-sometimes-stops-for-a-while-after-reaching-the-goal-pose">Why does the mobile robot sometimes stops for a while after reaching the goal pose?</h3>
+<p>When the mobile robot doesn’t reach a pose within tolerance range of goal pose, it might stops for a while to check if it can improve its pose.</p>
+
+<h3 id="object-and-target-lists">Object and Target lists:</h3>
+<p><strong>Object list:</strong></p>
+<ul>
+  <li>blue_box</li>
+  <li>yellow_ball</li>
+  <li>green_cylinder</li>
+</ul>
+
+<p><strong>Target list:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">conveyor1</code>(main conveyor with objects on it)</li>
+  <li><code class="language-plaintext highlighter-rouge">conveyor2</code>(green tray)</li>
+  <li><code class="language-plaintext highlighter-rouge">conveyor3</code>(yellow tray)</li>
+  <li><code class="language-plaintext highlighter-rouge">conveyor4</code>(blue tray)</li>
+</ul>
+
+<h3 id="ignorable-error-and-warning">Ignorable ERROR and WARNING</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">No p gain specified for pid.</code></li>
+</ul>
+
+<p>Following three errors can be ignored in the beginning, but if it keep spawning when you run your algorithm or move the robot with GUI, please relaunch the exercise.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Spawn service failed. Exiting.</code></li>
+  <li><code class="language-plaintext highlighter-rouge">wait_for_service(/controller_manager/load_controller): failed to contact, will keep trying</code></li>
+  <li><code class="language-plaintext highlighter-rouge">No laser scan received (and thus no pose updates have been published)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Timed out waiting for transform from base_link to map to become available before running costmap</code></li>
+</ul>
+
+<h2 id="demonstration-video-of-the-solution">Demonstration video of the solution</h2>
+<p><a href="https://youtu.be/dQTE766uFIY"><img src="https://img.youtube.com/vi/dQTE766uFIY/0.jpg" alt="solution" class="mx-auto d-block" /></a></p>
+
+<h2 id="references">References</h2>
+<p>[1] https://docs.neobotix.de/display/ROSSim/ROS-Simulation</p>
+
+      </article>
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-08-25-week11_12/" data-toggle="tooltip" data-placement="top" title="Week11_12">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/colab-gsoc2020-Yijia_Wu/2020-08-31-conclusion/" data-toggle="tooltip" data-placement="top" title="Conclusion">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+              
+  
+  
+  
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:sixerwyj@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/sixer51" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Yijia Wu
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Theme by
+        <a href="https://beautifuljekyll.com">beautiful-jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+  
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/colab-gsoc2020-Yijia_Wu/assets/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>
